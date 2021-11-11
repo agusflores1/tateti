@@ -1,5 +1,4 @@
 <?php
-include_once("tateti.php");
 
 /**************************************/
 /***** DATOS DE LOS INTEGRANTES *******/
@@ -7,7 +6,7 @@ include_once("tateti.php");
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* ... COMPLETAR ... */
-
+/*Flores Montes Ailen Agustina - FAI-3547 -Tecnicatura Desarrollo Web - ailen.flores@est.fi.uncoma.ed.ar - agusflores1*/
 
 
 
@@ -16,56 +15,6 @@ include_once("tateti.php");
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-
-
-
-
-
-
-
-/**************************************/
-/*********** PROGRAMA PRINCIPAL *******/
-/**************************************/
-
-//Declaración de variables:
-
-
-//Inicialización de variables:
-
-
-//Proceso:
-
-$juego = jugar();
-//print_r($juego);
-//imprimirResultado($juego);
-
-
-
-/*
-do {
-    $opcion = ...;
-
-    
-    switch ($opcion) {
-        case 1: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
-
-            break;
-        case 2: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-
-            break;
-        case 3: 
-            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
-
-            break;
-        
-            //...
-    }
-} while ($opcion != X);
-*/
-
-//PARTE AGUS
 
 //punto4
 /**Funcion que recibe un arreglo y un numero de partida y muestra en pantalla el resultado
@@ -96,9 +45,7 @@ function imprimirResultadoo($juego)
     } else {
         echo "EMPATE ENTRE " . $juego["jugadorCruz"] . " y " . $juego["jugadorCirculo"] . ". " . $juego["puntosCruz"] . "  puntos para cada uno!!!!!\n";
     }
-    echo "**********************\n";
-}
-//funciones
+    echo "**********************\n"; }
  
 /** punto 3
  * Solicita al usuario un número en el rango [$min,$max]
@@ -114,11 +61,9 @@ function solicitarNumeroEntre($min, $max)
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
         $numero = trim(fgets(STDIN));
     }
-    return $numero;
-}*/
+    return $numero; }*/
  
-/**
- *Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
+/**Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
  @return int */
 function seleccionarOpcion ()
 {
@@ -136,9 +81,25 @@ if ($opcion>7)
      echo "ERROR INGRESE UNA OPCION VALIDA \n"  ;
     } return $opcion ;
 }
- 
- 
-//INICIAMOS PROGRAMA
+
+
+
+
+
+/**************************************/
+/*********** PROGRAMA PRINCIPAL *******/
+/**************************************/
+
+//Declaración de variables:
+
+
+//Inicialización de variables:
+
+
+//Proceso:
+
+//PARTE AGUS
+ //INICIAMOS PROGRAMA
 do {
   $opcionElegida=seleccionarOpcion() ;
 switch($opcionElegida)
