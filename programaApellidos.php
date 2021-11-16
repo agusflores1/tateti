@@ -26,7 +26,7 @@ function datoPartida($arreglo,$numeroJuego1)
 {
   if ($numeroJuego1>=0 && $numeroJuego1<count($arreglo))
   {
-    echo "Juego TATETI: ".$numeroJuego1 . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos"."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]."obtuvo".$arreglo[$numeroJuego1]["puntosCirculo"]."Puntos";
+    echo "Juego TATETI: ". $numeroJuego1 . "\nJugador X: ". $arreglo[$numeroJuego1]["jugadorCruz"] . " Obtuvo " . $arreglo[$numeroJuego1]["puntosCruz"] ." Puntos" . "\nJugador O: ". $arreglo[$numeroJuego1]["jugadorCirculo"] . " Obtuvo " . $arreglo[$numeroJuego1]["puntosCirculo"] . " Puntos " ;
     //print_r( $arreglo[$numeroJuego1] );
   }
 }
@@ -76,6 +76,7 @@ echo "Menu de opciones:
     5) Mostrar resumen del jugador
     6) Mostrar listado de juegos ordenados por jugador O
     7) Salir \n";
+echo "Seleccione una Opcion del Menu: " ;
 $opcion = trim(fgets(STDIN)) ;
 if ($opcion>7)
     {
@@ -89,7 +90,7 @@ if ($opcion>7)
 
 function cargarJuegos () 
 {
-$arregloColeccionDeJuegos = [];
+$arregloColeccionDeJuegos = [] ;
 $arregloColeccionDeJuegos [0] = [ "jugadorCruz" => "EMA",
                                   "jugadorCirculo" => "BAUTY",
                                   "puntosCruz" => 0 ,
@@ -132,9 +133,62 @@ $arregloColeccionDeJuegos [9] = [ "jugadorCruz" => "GERMAN",
                                   "puntosCirculo" => 4 ];                                 
 
 return $arregloColeccionDeJuegos ;  
-
 }
 
+/*Funcion que agrega los datos de un juego a la coleccion de juegos
+*@param array $coleccionJuegos
+*@param array $nuevoJuego
+*@return array
+*/
+
+function agregarjuego ($coleccionJuegos , $nuevoJuego) {
+  //Int $n
+
+  $n = count ($coleccionJuegos) ;
+  $coleccionJuegos [$n] = $nuevoJuego ;
+  return $coleccionJuegos ;
+}
+
+/*Funcion que retorna el primer juego ganado por el jugador seleccionado
+
+*/ 
+
+function resumenJugador ($coleccionJuegos , $nombreJugador){
+
+  $numero = count ($coleccionJuegos);
+  $i = 0 ;
+
+  while ($i < $numero ) {
+    
+  }  
+}
+
+/*Funcion que valida que los datos ingresados por el usuario sean X u O
+*@return String
+*/
+
+function validarSimbolo () {
+  //String $simbolo
+  echo "Seleccione un Simbolo (X - O):  " ;
+  $simbolo = strtoupper (trim(fgets(STDIN))) ;
+  
+  var_dump($simbolo) ;
+
+  if (strlen($simbolo) == 1 or is_string($simbolo)) {
+    
+    echo "El caracter ingresado no es un caracter valido \n";
+    
+  } elseif ($simbolo === "X" or $simbolo === "O" ) {
+
+    return $simbolo ;
+
+    }else {
+
+      echo "El caracter ingresado no es un caracter valido \n";
+    
+  }
+
+}
 
 
 
@@ -147,33 +201,35 @@ return $arregloColeccionDeJuegos ;
 
 //Inicialización de variables:
 
+$arregloColeccionDeJuegos = [];
 
 //Proceso:
 
 //PARTE EMANUEL
-cargarJuegos() ;
-print_r($arregloColeccionDeJuegos) ;
 
+$arregloColeccionDeJuegos = cargarJuegos() ;
 
+$nuevoSimbolo = validarSimbolo() ;
 
 //PARTE AGUS
  //INICIAMOS PROGRAMA
 do {
   $opcionElegida=seleccionarOpcion() ;
 switch($opcionElegida)
-{case 1:
+  {case 1:
   include_once("tateti.php");
   $juego=jugar();
   imprimirResultado($juego);
-  $ArregloColeccionDeJuegos[]=$juego;
- 
-  //print_r($ColeccionDeJuegos) ;
+  $arregloColeccionDeJuegos = agregarjuego ($arregloColeccionDeJuegos,$juego) ;
+   
+  //print_r($arregloColeccionDeJuegos) ;
 break ;
  case 2:
   echo "Ingrese un numero de partida: ";
   $numeroPartida=trim(fgets(STDIN)) ;
   datoPartida($arregloColeccionDeJuegos,$numeroPartida);
   break 2 ;
- 
-} } while ($opcionElegida<>7) ;
+ } 
+
+} while ($opcionElegida<>7) ;
  
