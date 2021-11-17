@@ -23,12 +23,17 @@
  * @param $numeroJuego1 int
  */
 function datoPartida($arreglo,$numeroJuego1){
-  if ($numeroJuego1>=0 && $numeroJuego1<count($arreglo))
-  {
-    echo "Juego TATETI: ".$numeroJuego1 . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos ";
-    //print_r( $arreglo[$numeroJuego1] );
-  }
+    if ($numeroJuego1>=0 && $numeroJuego1<count($arreglo)){
+
+      echo "Juego TATETI: ".$numeroJuego1 . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos ";
+      //print_r( $arreglo[$numeroJuego1] );
+    }else {
+    
+    echo "ERROR el numero de partida ingresado no existe " ;
+    }
 }
+
+
 /** FUNCION UTILIZADA AL FINAL DE UNA PARTIDA
  *  Muestra en pantalla el resultado del juego
  * @param array $juego
@@ -295,32 +300,40 @@ $arregloColeccionDeJuegos = [];
 
 //PARTE EMANUEL
 $arregloColeccionDeJuegos = cargarJuegos() ;
-print_r($arregloColeccionDeJuegos) ;
+//print_r($arregloColeccionDeJuegos) ;
 
 
 //PARTE AGUS
  //INICIAMOS PROGRAMA
 do {
   $opcionElegida=seleccionarOpcion() ;
-switch($opcionElegida)
-{case 1:
-  include_once("tateti.php");
-  $juego=jugar();
-  imprimirResultado($juego);
-  $arregloColeccionDeJuegos = agregarJuego ($arregloColeccionDeJuegos,$juego) ;
+  switch($opcionElegida){
+    case 1:
+    include_once("tateti.php");
+    $juego=jugar();
+    imprimirResultado($juego);
+    $arregloColeccionDeJuegos = agregarJuego ($arregloColeccionDeJuegos,$juego) ;
 
-  print_r($arregloColeccionDeJuegos);
-break;
-case 2: 
-  echo "Ingrese un numero de partida: ";
-  $numeroPartida=trim(fgets(STDIN)) ;
+    //print_r($arregloColeccionDeJuegos);
+    break;
+    case 2:
+  
+    echo "Ingrese un numero de partida: ";
+    $numeroPartida=trim(fgets(STDIN)) ;
+    datoPartida($arregloColeccionDeJuegos,$numeroPartida);
+  
+    break ;
+    case 3 ;
 
-  /*while (0>$numeroPartida || $numeroPartida> count($arregloColeccionDeJuegos)){
-    echo "ERROR Ingrese una opcion valida: ";
-    $opcion=trim(fgets(STDIN));
+    break ;
+    case 4 ;
+
+    break ;
+    case 5 ;
+
+    break ;
+    case 6 ;
+
+    break ;
   } 
-  */ 
-  datoPartida($arregloColeccionDeJuegos,$numeroPartida);
-  break 2;
-} 
-} while ($opcionElegida<>7);
+} while ($opcionElegida === 7);
