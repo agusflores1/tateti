@@ -23,9 +23,13 @@
  * @param $numeroJuego1 int
  */
 function datoPartida($arreglo,$numeroJuego1){
-    if ($numeroJuego1>=0 && $numeroJuego1<count($arreglo)){
+    if ($numeroJuego1>=1 && $numeroJuego1<count($arreglo)){ //cambie el 0 por 1 en la primer condicion 
 
-      echo "Juego TATETI: ".$numeroJuego1 . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos ";
+      $numeroJuego1 = $numeroJuego1 - 1 ; // le resto 1 al numero ingreaso por el usuario porque el indice arranca en 0
+      echo "***************************************\n";
+      echo "Juego TATETI: ".$numeroJuego1 + 1 . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
+      echo "***************************************\n";
+
       //print_r( $arreglo[$numeroJuego1] );
     }else {
     
@@ -34,11 +38,11 @@ function datoPartida($arreglo,$numeroJuego1){
 }
 
 
-/** FUNCION UTILIZADA AL FINAL DE UNA PARTIDA
+/** FUNCION UTILIZADA AL FINAL DE UNA PARTIDA (Esta funcion se usa desde el archivo tateti)
  *  Muestra en pantalla el resultado del juego
  * @param array $juego
- */
-function imprimirResultadoo($juego){
+*/
+  /* function imprimirResultadoo($juego){
     echo "**********************\n";
     if ($juego["puntosCruz"] > $juego["puntosCirculo"]) {
         echo $juego["jugadorCruz"] . " GANASTE " . $juego["puntosCruz"] . " puntos!!!!!\n";
@@ -48,15 +52,16 @@ function imprimirResultadoo($juego){
         echo "EMPATE ENTRE " . $juego["jugadorCruz"] . " y " . $juego["jugadorCirculo"] . ". " . $juego["puntosCruz"] . "  puntos para cada uno!!!!!\n";
     }
     echo "**********************\n";
-}
+} 
+*/
 /** Punto 3 (Agus):
  * Solicita al usuario un número en el rango [$min,$max]
  * @param int $min
  * @param int $max
  * @return int
  */
-/*
-function solicitarNumeroEntre($min, $max){
+/*Esta funcion se puede usar desde el archivo tateti 
+function solicitarNumeroEntre($min, $max){ 
     //int $numero
     $numero = trim(fgets(STDIN));
     while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
@@ -78,7 +83,7 @@ function seleccionarOpcion (){
     1) Jugar al tateti
     2) Mostrar un juego
     3) Mostrar el primer juego ganador
-    4) Mostrar el primer juego ganador
+    4) Mostrar porcentage de juegos ganados
     5) Mostrar resumen del jugador
     6) Mostrar listado de juegos ordenados por jugador O
     7) Salir \n";
@@ -227,15 +232,23 @@ function resumenJugador($arregloColeccionDeJuegos,$nombreJugador){
 }
 /** Punto 8 (Agus):
  * funcion que valida el simbolo ingresado y lo retorna 
- * @return string simbolo en mayusculas
+ * @return string $simbolo en mayusculas
  */
 function simboloValido(){
+  //int $salida
+  $salida = 0 ;
+
   do{
-  echo"Ingrese simbolo (X/0): ";
-  $simbolo=trim(fgets(STDIN));
-  $simbolo=strtoupper($simbolo);
-  }while($simbolo=!"X"||$simbolo!="O");
+    echo"Seleccione un simbolo (X/O): ";
+    $simbolo=strtoupper (trim(fgets(STDIN)));
+    if ($simbolo == "X" || $simbolo == "O"){
+      $salida = 1 ;
+    } else {
+        echo "Error el simbolo seleccionado no es valido \n" ;
+    }
+  }while($salida != 1);
   return $simbolo;
+  
 }
 /** Punto 9 (Emi):
  * Implementar una función que dada una colección de juegos, retorne la cantidad de juegos ganados
@@ -244,10 +257,13 @@ function simboloValido(){
  * @return int retorna la cantidad de juegos que se ganaron en total
  */
 function juegosGanados($arregloColeccionDeJuegos){
-  $cantJuegosGanados=0;
-  for ($i=0; $i<count($arregloColeccionDeJuegos) ; $i++) { 
-    if ($arregloColeccionDeJuegos[$i]["puntosCruz"]>$arregloColeccionDeJuegos[$i]["puntosCirculo"]||$arregloColeccionDeJuegos[$i]["puntosCruz"]<$arregloColeccionDeJuegos[$i]["puntosCirculo"]){
-      $cantJuegosGanados=$cantJuegosGanados+1;
+  
+  $cantJuegosGanados = 0;
+  
+  for ($i=0 ; $i<count($arregloColeccionDeJuegos) ; $i++) { 
+    if (($arregloColeccionDeJuegos[$i]["puntosCruz"] + $arregloColeccionDeJuegos[$i]["puntosCirculo"]) > 2 ){
+      
+      $cantJuegosGanados = $cantJuegosGanados +1;
   }
   return $cantJuegosGanados;
   }
@@ -325,15 +341,34 @@ do {
     break ;
     case 3 ;
 
+
     break ;
     case 4 ;
 
+    $simboloElegido = simboloValido() ;
+    var_dump ($simboloElegido) ;
+    $totalGanados = juegosGanados($arregloColeccionDeJuegos) ;
+    var_dump ($totalGanados) . "\n";  
+    $ganadosElegido = juegosGanadosSimbolo($arregloColeccionDeJuegos , $simboloElegido ) ;
+    var_dump ($ganadosElegido) . "\n";
+    $porcentaje = ($ganadosElegido * $totalGanados) / 100 ;
+    echo "El porcentaje de ganados de " . $simboloElegido . " es " . $porcentaje . " % \n" ;
+    
+    
     break ;
     case 5 ;
+    //Falta hacer que funcione bien
+    echo "Ingrese el nombre de un jugador: " ;
+    $nomJugador = strtoupper (trim(fgets(STDIN))) ;
+    var_dump($nomJugador) ;
+    $primerGanador = resumenJugador ($arregloColeccionDeJuegos , $nomJugador) ;
+        
+    //Falta una funcion que imprima el resultado en pantalla
+      print_r($primerGanador);  
 
     break ;
     case 6 ;
 
     break ;
   } 
-} while ($opcionElegida === 7);
+} while ($opcionElegida != 7);
