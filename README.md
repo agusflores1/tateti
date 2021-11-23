@@ -15,4 +15,4 @@ Jorge Emanuel Heredia - Legajo FAI-3063 - email: jorge.heredia@est.fi.edu.ar - u
 
 Ailen Agustina Flores Montes - Legajo FAI-3547 -email: ailen.flores@est.fi.edu.ar - usuario github:agusflores1
 
-Veronica Emilce Heffner - Legajo FAI-2319 -  email: veronica.heffnerQest.fi.uncoma.edu.ar usuario github: emiffner
+Veronica Emilce Heffner - Legajo FAI-2319 -  email: veronica.heffner@est.fi.uncoma.edu.ar usuario github: emiffner
