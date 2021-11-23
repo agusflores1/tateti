@@ -294,7 +294,10 @@ function ordenarColeccionDeJuegos($coleccionDeJuegos)
 /**************************************/
 
 //Declaración de variables:
-
+array $arregloColeccionDeJuegos, $juego $primerGanador
+int $opcionElegida $numeroPartida $numeroPrimerPartida $totalGanados $ganadosElegido
+string $nombreJugador $simboloElegido $nomJugador
+float $porcentaje
 
 //Inicialización de variables:
 
