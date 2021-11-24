@@ -277,20 +277,32 @@ function juegosGanadosSimbolo($arregloColeccionDeJuegos,$simbolo){
   }
   return $cantJuegosGanadosSimbolo;
 }
+
 /** Punto 11:
  * Función sin retorno que dada una colección de juegos
  * muestre la colección de juegos ordenado por el nombre del jugador cuyo símbolo es O
  * @param array $arregloColeccionDeJuegos
  */
-    function ordenarColeccionDeJuegos($arregloColeccionDeJuegos)
+function ordenarColeccionDeJuegos($arregloColeccionDeJuegos)
 {
-  $n=count($arregloColeccionDeJuegos);
-  for ($i=0;$i<$n;$i++)
-    { 
-      sort($arregloColeccionDeJuegos);
-    print_r($arregloColeccionDeJuegos[$i]["jugadorCirculo"] ."\n" );
-   
-    }  
+  uasort ($arregloColeccionDeJuegos , "cmp" ) ;
+
+  print_r ($arregloColeccionDeJuegos) ;
+
+}
+
+function cmp ($a , $b) {
+
+  if ($a ["jugadorCirculo"] > $b ["jugadorCirculo"]) {
+
+    return 1 ;
+  } elseif ($a ["jugadorCirculo"] < $b ["jugadorCirculo"]){
+
+    return -1 ;
+  } else {
+  
+    return 0 ;
+  }
 }
 
 
