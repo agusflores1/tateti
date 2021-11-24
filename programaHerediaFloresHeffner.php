@@ -310,10 +310,10 @@ $arregloColeccionDeJuegos = [];
 $arregloColeccionDeJuegos = cargarJuegos();
 
  //Menú
-do 
-{
+do{
   $opcionElegida=seleccionarOpcion();
   switch($opcionElegida){
+    //Opción 1: Jugar TaTeTi
     case 1:
     include_once("tateti.php");
     $juego=jugar();
@@ -321,50 +321,49 @@ do
     $arregloColeccionDeJuegos = agregarJuego ($arregloColeccionDeJuegos,$juego) ;
     //var_dump($arregloColeccionDeJuegos)
     break;
+    //Opción 2: Mostrar un juego
     case 2:
     echo "Ingrese un numero de partida: ";
     $numeroPartida=trim(fgets(STDIN)) ;
     datoPartida($arregloColeccionDeJuegos,$numeroPartida);
-  
     break ;
+    //Opción 3: Mostrar el primer ganador
     case 3 :
     echo "Ingrese nombre : ";
     $nombreJugador= strtoupper (trim(fgets(STDIN))) ;
     $numeroPrimerPartida=primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador);
-    if ($numeroPrimerPartida==-1)
-    {echo "El jugador ".$nombreJugador." no gano ninguna partida \n"; }
-    else 
-    {
+    if ($numeroPrimerPartida==-1){
+      echo "El jugador ".$nombreJugador." no gano ninguna partida \n"; }
+    else{
     echo "***************************************\n";
     echo "Juego TATETI: ".$numeroPrimerPartida ; 
     echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
     "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";} 
-    break ;
+    break;
+    //Opción 4: Mostrar el porcentaje de juegos ganados
     case 4 :
     $simboloElegido = simboloValido();
     $totalGanados = juegosGanados($arregloColeccionDeJuegos) ;
     $ganadosElegido = juegosGanadosSimbolo($arregloColeccionDeJuegos , $simboloElegido );
     $porcentaje = ($ganadosElegido * $totalGanados) / 100 ;
     echo "El porcentaje de ganados de " . $simboloElegido . " es " . $porcentaje . " % \n" ;
-
-    break ;
+    break;
+    //Opción 5: Mostrar el resumen del jugador
     case 5 :
     echo "Ingrese el nombre de un jugador: " ;
-    $nomJugador = strtoupper (trim(fgets(STDIN))) ;
-    $primerGanador = resumenJugador ($arregloColeccionDeJuegos , $nomJugador) ;
-    
+    $nomJugador = strtoupper (trim(fgets(STDIN)));
+    $primerGanador = resumenJugador ($arregloColeccionDeJuegos,$nomJugador);
     echo "Jugador:" . $primerGanador["nombre"] ."\n" ;
     echo "GANO: ". $primerGanador["juegosGanados"] ."\n";
     echo "PERDIO: ". $primerGanador["juegosPerdidos"] ."\n" ;
     echo "EMPATO: " . $primerGanador["juegosEmpatados"] ."\n" ;
     echo "Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
-
     break ;
-    case 6 ;
-          
+    //Opción 6: Mostrar listado de juegos ordenado por O
+    case 6;
     ordenarColeccionDeJuegos($arregloColeccionDeJuegos);
-
     break ;
     }    
+    //Opción 7: Salir
 } while ($opcionElegida != 7);
