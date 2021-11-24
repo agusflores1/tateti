@@ -353,11 +353,15 @@ do
     echo "Ingrese nombre : ";
     $nombreJugador= strtoupper (trim(fgets(STDIN))) ;
     $numeroPrimerPartida=primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador);
+    if ($numeroPrimerPartida==-1)
+    {echo "El jugador ".$nombreJugador." no gano ninguna partida"; }
+    else 
+    {
     echo "***************************************\n";
       echo "Juego TATETI: ".$numeroPrimerPartida ; 
       "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
       "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
-      echo "***************************************\n";
+      echo "***************************************\n";} 
     break ;
     
     case 4 :
