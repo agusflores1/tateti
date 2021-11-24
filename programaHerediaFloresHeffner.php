@@ -213,8 +213,8 @@ function resumenJugador($arregloColeccionDeJuegos,$nombreJugador){
       }
     }
   }
-  return $arregloResumenJugador;
   }
+  return $arregloResumenJugador;
 }
 /** Punto 8 (Agus):
  * funcion que valida el simbolo ingresado y lo retorna 
