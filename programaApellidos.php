@@ -52,20 +52,23 @@ function imprimirResultadoo($juego)
  * Solicita al usuario un número en el rango [$min,$max]
  * @param int $min
  * @param int $max
- * @return int
- *//*
+ * @return int 
+ */
+
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
+    echo "Seleccione una Opcion del Menu: " ;
     $numero = trim(fgets(STDIN));
     while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
         echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
         $numero = trim(fgets(STDIN));
     }
-    return $numero; }*/
+    return $numero; }
  
-/**Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
+/**Punto 2: Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
  @return int */
+
 function seleccionarOpcion ()
 {
 echo "Menu de opciones:
@@ -76,12 +79,12 @@ echo "Menu de opciones:
     5) Mostrar resumen del jugador
     6) Mostrar listado de juegos ordenados por jugador O
     7) Salir \n";
-echo "Seleccione una Opcion del Menu: " ;
-$opcion = trim(fgets(STDIN)) ;
-if ($opcion>7)
-    {
-     echo "ERROR INGRESE UNA OPCION VALIDA \n"  ;
-    } return $opcion ;
+  $min = 1 ;
+  $max = 7 ;
+
+  $opcion = solicitarNumeroEntre ($min , $max) ; 
+
+  return $opcion ;
 }
 
 /*Funcion que precarga 10 juegos al iniciar el programa 

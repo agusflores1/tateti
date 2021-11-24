@@ -30,7 +30,7 @@ function datoPartida($arreglo,$numeroJuego1){
     }
     else 
     {
-    echo "ERROR el numero de partida ingresado no existe " ;
+    echo "ERROR el numero de partida ingresado no existe " . "\n" ;
     }
 }
 
@@ -142,7 +142,7 @@ function agregarJuego ($arregloColeccionJuegos , $nuevoJuego ){
   $n = count ($arregloColeccionJuegos) ;
   $arregloColeccionJuegos [$n] = $nuevoJuego ;
   
-  print_r ($arregloColeccionJuegos) ;
+  //print_r ($arregloColeccionJuegos) ;
   return $arregloColeccionJuegos ;
   
 }
@@ -344,7 +344,7 @@ do
     $juego=jugar();
     imprimirResultado($juego);
     $arregloColeccionDeJuegos = agregarJuego ($arregloColeccionDeJuegos,$juego) ;
-    var_dump($arregloColeccionDeJuegos) ;
+    //var_dump($arregloColeccionDeJuegos) ;
     break;
     case 2:
     echo "Ingrese un numero de partida: ";
