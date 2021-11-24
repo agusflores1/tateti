@@ -13,52 +13,45 @@
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
-
-/** Punto 4 (Agus):
+/** Punto 4:
  * Funcion que recibe un arreglo y un numero de partida y muestra en pantalla el resultado
  * @param $arreglo array
  * @param $numeroJuego1 int
  */
 function datoPartida($arreglo,$numeroJuego1){
-    if ($numeroJuego1>=1 && ($numeroJuego1<count($arreglo) +1))
-    {  
+    if ($numeroJuego1>=1 && ($numeroJuego1<count($arreglo) +1)){  
       $numeroJuego1 = $numeroJuego1 - 1 ; // le resto 1 al numero ingreaso por el usuario porque el indice arranca en 0
       echo "***************************************\n";
       echo "Juego TATETI: ".($numeroJuego1 + 1 ) . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";
-      //print_r( $arreglo[$numeroJuego1] );
     }
     else 
     {
     echo "ERROR el numero de partida ingresado no existe " . "\n" ;
     }
 }
-
-/** Punto 3 (Agus):
+/** Punto 3:
  * Solicita al usuario un número en el rango [$min,$max]
  * @param int $min
  * @param int $max
+ * @var int $numero
  * @return int
  */
-/*Esta funcion se puede usar desde el archivo tateti 
-function solicitarNumeroEntre($min, $max){ 
-    //int $numero
+function solicitarNumeroEntre($min, $max){
+  echo "Seleccione una opción del menú: "; 
+  $numero = trim(fgets(STDIN));
+  while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
+    echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
     $numero = trim(fgets(STDIN));
-    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
-        echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
-        $numero = trim(fgets(STDIN));
-    }
-    return $numero;
+  }
+  return $numero;
 }
-*/
-
-/** punto 2 Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
-* @return int
-*/
+/** Punto 2:
+ * Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
+ * @var int $opcion 
+ * @return int $opcion
+ */
 function seleccionarOpcion (){
-  
-  //Int $opcion
-
   echo "Menu de opciones:
     1) Jugar al tateti
     2) Mostrar un juego
@@ -67,23 +60,17 @@ function seleccionarOpcion (){
     5) Mostrar resumen del jugador
     6) Mostrar listado de juegos ordenados por jugador O
     7) Salir \n";
-  echo "Seleccione una Opcion del Menu: " ;
-  $opcion=trim(fgets(STDIN));
-  while ($opcion>7 || $opcion<1){
-    echo "ERROR Ingrese una opcion valida: ";
-    $opcion=trim(fgets(STDIN));
-  }
+    $min=1;
+    $max=7;
+    $opcion=solicitarNumeroEntre($min,$max);
   return $opcion;
   }
-
-/** Punto 1 (Emanuel):
+/** Punto 1:
  * Funcion que precarga 10 juegos al iniciar el programa  
- * @return array 
+ * @var array $arregloColeccionDeJuegos
+ * @return array $arregloColeccionDeJuegos
  */
 function cargarJuegos (){
-
-  //array $arregloColeccionDeJuegos
-
   $arregloColeccionDeJuegos = [];
   $arregloColeccionDeJuegos [0] = [ "jugadorCruz" => "EMA",
                                     "jugadorCirculo" => "BAUTY",
@@ -128,7 +115,7 @@ function cargarJuegos (){
 
   return $arregloColeccionDeJuegos;
 }
-/** Punto 5 (Emanuel):
+/** Punto 5:
  * Función cuya entrada en la coleccion de juegos y un juego, y la función retorna la 
  * colección modificada al agregarse el nuevo juego
  * @param array $arreglo
@@ -145,7 +132,7 @@ function agregarJuego ($arreglo , $nuevoJuego ){
   return $arreglo ;
   
 }
-/** Punto 6 (Emi):
+/** Punto 6:
  * Función que dada una colección de juegos y el nombre de un jugador, retorna el indice del primer juego
  * ganado por dicho jugador. Si el jugador no ganó ningún juego, la función debe retornar -1
  * @param array $arregloColeccionDeJuegos
@@ -164,8 +151,7 @@ function primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador){
     }
   return $ganoJuego;
 }
-
-/** Punto 7 (Emi):
+/** Punto 7:
  * Función que dada la colección de juegos y el nombre de un jugador, 
  * retorne el resumen del jugador
  * @param array $arregloColeccionDeJuegos
@@ -215,7 +201,7 @@ function resumenJugador($arregloColeccionDeJuegos,$nombreJugador){
   }
   return $arregloResumenJugador;
 }
-/** Punto 8 (Agus):
+/** Punto 8:
  * funcion que valida el simbolo ingresado y lo retorna 
  * @return string $simbolo en mayusculas
  */
@@ -235,7 +221,7 @@ function simboloValido(){
   return $simbolo;
   
 }
-/** Punto 9 (Emi):
+/** Punto 9:
  * Implementar una función que dada una colección de juegos, retorne la cantidad de juegos ganados
  * sin importar si es X o O
  * @param array $arregloColeccionDeJuegos
@@ -250,7 +236,7 @@ function juegosGanados($arregloColeccionDeJuegos){
   }
   return $cantJuegosGanados;
 }
-/** Punto 10 (Emi):
+/** Punto 10:
  * Implementar una función que dada una colección de juegos y un símbolo, retorne la cantidad de
  * juegos ganados por el símbolo ingresado por parámetros
  * @param array $coleccionDeJuegos
@@ -272,7 +258,6 @@ function juegosGanadosSimbolo($arregloColeccionDeJuegos,$simbolo){
   }
   return $cantJuegosGanadosSimbolo;
 }
-
 /** Punto 11:
  * Función sin retorno que dada una colección de juegos
  * muestre la colección de juegos ordenado por el nombre del jugador cuyo símbolo es O
