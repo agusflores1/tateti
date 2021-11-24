@@ -80,7 +80,7 @@ function seleccionarOpcion (){
  * Funcion que precarga 10 juegos al iniciar el programa  
  * @return array 
  */
-function cargarJuegos () {
+function cargarJuegos (){
 
   //array $arregloColeccionDeJuegos
 
@@ -152,8 +152,7 @@ function agregarJuego ($arreglo , $nuevoJuego ){
  * @param string $nombreJugador
  * @return int retorna indice para ubicar el primer juego ganado por el jugador, si nunca gano, retorna -1
  */
-function primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador)
-{
+function primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador){
   $ganoJuego=-1;
   for ($i=0; $i<count($arregloColeccionDeJuegos) ; $i++) 
     { 
@@ -223,7 +222,6 @@ function resumenJugador($arregloColeccionDeJuegos,$nombreJugador){
 function simboloValido(){
   //int $salida
   $salida = 0 ;
-
   do{
     echo"Seleccione un simbolo (X/O): ";
     $simbolo=strtoupper (trim(fgets(STDIN)));
@@ -244,17 +242,13 @@ function simboloValido(){
  * @return int retorna la cantidad de juegos que se ganaron en total
  */
 function juegosGanados($arregloColeccionDeJuegos){
-  
   $cantJuegosGanados = 0;
-  
   for ($i=0 ; $i<count($arregloColeccionDeJuegos) ; $i++) { 
-    if (($arregloColeccionDeJuegos[$i]["puntosCruz"] + $arregloColeccionDeJuegos[$i]["puntosCirculo"]) > 2 )
-    {
-      
+    if ($arregloColeccionDeJuegos[$i]["puntosCruz"]>$arregloColeccionDeJuegos[$i]["puntosCirculo"]||$arregloColeccionDeJuegos[$i]["puntosCruz"]<$arregloColeccionDeJuegos[$i]["puntosCirculo"]){
       $cantJuegosGanados = $cantJuegosGanados +1;
     }
-  return $cantJuegosGanados;
   }
+  return $cantJuegosGanados;
 }
 /** Punto 10 (Emi):
  * Implementar una función que dada una colección de juegos y un símbolo, retorne la cantidad de
@@ -284,66 +278,48 @@ function juegosGanadosSimbolo($arregloColeccionDeJuegos,$simbolo){
  * muestre la colección de juegos ordenado por el nombre del jugador cuyo símbolo es O
  * @param array $arregloColeccionDeJuegos
  */
-function ordenarColeccionDeJuegos($arregloColeccionDeJuegos)
-{
-  uasort ($arregloColeccionDeJuegos , "cmp" ) ;
-
-  print_r ($arregloColeccionDeJuegos) ;
-
+function ordenarColeccionDeJuegos($arregloColeccionDeJuegos){
+  uasort ($arregloColeccionDeJuegos , "cmp" );
+  print_r ($arregloColeccionDeJuegos);
 }
 // Funcion de comparacion para aplicar el orden al arreglo con la funcion predeterminada de PHP "uasort" del punto 11
-function cmp ($a , $b) {
-
+function cmp ($a , $b){
   if ($a ["jugadorCirculo"] > $b ["jugadorCirculo"]) {
-
     return 1 ;
   } elseif ($a ["jugadorCirculo"] < $b ["jugadorCirculo"]){
-
     return -1 ;
   } else {
-  
     return 0 ;
   }
 }
-
-
-
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
 /**************************************/
 
 //Declaración de variables:
-
-/**array $arregloColeccionDeJuegos , $juego , $primerGanador
-int $opcionElegida , $numeroPartida , $numeroPrimerPartida , $totalGanados , $ganadosElegido
-string $nombreJugador , $simboloElegido , $nomJugador
-float $porcentaje
+/** @param array $arregloColeccionDeJuegos , $juego , $primerGanador
+* @var int $opcionElegida , $numeroPartida , $numeroPrimerPartida , $totalGanados , $ganadosElegido
+* @var string $nombreJugador , $simboloElegido , $nomJugador
+* @var float $porcentaje
 */
 
 //Inicialización de variables:
-
 $arregloColeccionDeJuegos = [];
-
 //Proceso:
+$arregloColeccionDeJuegos = cargarJuegos();
 
-//PARTE EMANUEL
-$arregloColeccionDeJuegos = cargarJuegos() ;
-//print_r($arregloColeccionDeJuegos) ;
-
-
-//PARTE AGUS
- //INICIAMOS PROGRAMA
+ //Menú
 do 
 {
-  $opcionElegida=seleccionarOpcion() ;
+  $opcionElegida=seleccionarOpcion();
   switch($opcionElegida){
     case 1:
     include_once("tateti.php");
     $juego=jugar();
     imprimirResultado($juego);
     $arregloColeccionDeJuegos = agregarJuego ($arregloColeccionDeJuegos,$juego) ;
-    //var_dump($arregloColeccionDeJuegos) ;
+    //var_dump($arregloColeccionDeJuegos)
     break;
     case 2:
     echo "Ingrese un numero de partida: ";
@@ -362,22 +338,18 @@ do
     echo "***************************************\n";
     echo "Juego TATETI: ".$numeroPrimerPartida ; 
     echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
-     "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
+    "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";} 
     break ;
     case 4 :
-    $simboloElegido = simboloValido() ;
-    var_dump ($simboloElegido) ;
+    $simboloElegido = simboloValido();
     $totalGanados = juegosGanados($arregloColeccionDeJuegos) ;
-    var_dump ($totalGanados) . "\n";  
-    $ganadosElegido = juegosGanadosSimbolo($arregloColeccionDeJuegos , $simboloElegido ) ;
-    var_dump ($ganadosElegido) . "\n";
+    $ganadosElegido = juegosGanadosSimbolo($arregloColeccionDeJuegos , $simboloElegido );
     $porcentaje = ($ganadosElegido * $totalGanados) / 100 ;
     echo "El porcentaje de ganados de " . $simboloElegido . " es " . $porcentaje . " % \n" ;
 
     break ;
     case 5 :
-    //Falta hacer que funcione bien
     echo "Ingrese el nombre de un jugador: " ;
     $nomJugador = strtoupper (trim(fgets(STDIN))) ;
     $primerGanador = resumenJugador ($arregloColeccionDeJuegos , $nomJugador) ;
