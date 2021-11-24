@@ -331,8 +331,8 @@ do{
     $simboloElegido = simboloValido();
     $totalGanados = juegosGanados($arregloColeccionDeJuegos) ;
     $ganadosElegido = juegosGanadosSimbolo($arregloColeccionDeJuegos , $simboloElegido );
-    $porcentaje = ($ganadosElegido * $totalGanados) / 100 ;
-    echo "El porcentaje de ganados de " . $simboloElegido . " es " . $porcentaje . " % \n" ;
+    $porcentaje = ($ganadosElegido * 100) / $totalGanados ;
+    echo "El porcentaje de ganados de " . $simboloElegido . " es " . round ($porcentaje , 2) . " % \n" ;
     break;
     //Opción 5: Mostrar el resumen del jugador
     case 5 :
