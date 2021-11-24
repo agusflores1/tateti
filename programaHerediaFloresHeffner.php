@@ -282,8 +282,13 @@ function juegosGanadosSimbolo($arregloColeccionDeJuegos,$simbolo){
  * muestre la colección de juegos ordenado por el nombre del jugador cuyo símbolo es O
  * @param array $coleccionDeJuegos
  */
-function ordenarColeccionDeJuegos($coleccionDeJuegos)
-{
+function ordenarColeccionDeJuegos($coleccionDeJuegos){
+
+  ksort($coleccionDeJuegos);
+  foreach ($coleccionDeJuegos as $indice => $elemento ){
+
+    echo $indice . " = " . $elemento ;
+  }
 }
 
 
@@ -294,10 +299,12 @@ function ordenarColeccionDeJuegos($coleccionDeJuegos)
 /**************************************/
 
 //Declaración de variables:
-array $arregloColeccionDeJuegos, $juego $primerGanador
-int $opcionElegida $numeroPartida $numeroPrimerPartida $totalGanados $ganadosElegido
-string $nombreJugador $simboloElegido $nomJugador
+
+/**array $arregloColeccionDeJuegos , $juego , $primerGanador
+int $opcionElegida , $numeroPartida , $numeroPrimerPartida , $totalGanados , $ganadosElegido
+string $nombreJugador , $simboloElegido , $nomJugador
 float $porcentaje
+*/
 
 //Inicialización de variables:
 
@@ -330,10 +337,10 @@ do
     break ;
     case 3 :
     echo "Ingrese nombre : ";
-    $nombreJugador=trim(fgets(STDIN)) ;
+    $nombreJugador= strtoupper (trim(fgets(STDIN))) ;
     $numeroPrimerPartida=primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador);
     echo "***************************************\n";
-      echo "Juego TATETI: ".$numeroPrimerPartida  . 
+      echo "Juego TATETI: ".$numeroPrimerPartida ; 
       "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
       "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";
@@ -354,15 +361,16 @@ do
     echo "Ingrese el nombre de un jugador: " ;
     $nomJugador = strtoupper (trim(fgets(STDIN))) ;
     $primerGanador = resumenJugador ($arregloColeccionDeJuegos , $nomJugador) ;
-      echo "Jugador:" . $primerGanador["nombre"] ."\n" ;
-      echo "GANO: ". $primerGanador["juegosGanados"] ."\n";
-      echo "PERDIO: ". $primerGanador["juegosPerdidos"] ."\n" ;
-      echo "EMPATO: " . $primerGanador["juegosEmpatados"] ."\n" ;
-      echo "Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
+    
+    echo "Jugador:" . $primerGanador["nombre"] ."\n" ;
+    echo "GANO: ". $primerGanador["juegosGanados"] ."\n";
+    echo "PERDIO: ". $primerGanador["juegosPerdidos"] ."\n" ;
+    echo "EMPATO: " . $primerGanador["juegosEmpatados"] ."\n" ;
+    echo "Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
     break ;
     
     case 6 ;
-
+    ordenarColeccionDeJuegos($arregloColeccionDeJuegos) ;        
     break ;
     }    
 } while ($opcionElegida != 7);
