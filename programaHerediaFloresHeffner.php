@@ -131,19 +131,18 @@ function cargarJuegos () {
 /** Punto 5 (Emanuel):
  * Función cuya entrada en la coleccion de juegos y un juego, y la función retorna la 
  * colección modificada al agregarse el nuevo juego
- * @param array $arregloColeccionDeJuegos
+ * @param array $arreglo
  * @param int @nuevoJuego
  * @return array arreglo modificado con el juego nuevo
  */
-function agregarJuego ($arregloColeccionJuegos , $nuevoJuego ){
+function agregarJuego ($arreglo , $nuevoJuego ){
   //Queda completar con el código hecho por Emanuel
   //Int $n
 
-  $n = count ($arregloColeccionJuegos) ;
-  $arregloColeccionJuegos [$n] = $nuevoJuego ;
+  $n = count ($arreglo) ;
+  $arreglo [$n] = $nuevoJuego ;
   
-  //print_r ($arregloColeccionJuegos) ;
-  return $arregloColeccionJuegos ;
+  return $arreglo ;
   
 }
 /** Punto 6 (Emi):
