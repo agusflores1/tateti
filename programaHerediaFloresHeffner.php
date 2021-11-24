@@ -24,7 +24,7 @@ function datoPartida($arreglo,$numeroJuego1){
     {  
       $numeroJuego1 = $numeroJuego1 - 1 ; // le resto 1 al numero ingreaso por el usuario porque el indice arranca en 0
       echo "***************************************\n";
-      echo "Juego TATETI: ".$numeroJuego1 + 1 . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
+      echo "Juego TATETI: ".($numeroJuego1 + 1 ) . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";
       //print_r( $arreglo[$numeroJuego1] );
     }
@@ -280,15 +280,17 @@ function juegosGanadosSimbolo($arregloColeccionDeJuegos,$simbolo){
 /** Punto 11:
  * Función sin retorno que dada una colección de juegos
  * muestre la colección de juegos ordenado por el nombre del jugador cuyo símbolo es O
- * @param array $coleccionDeJuegos
+ * @param array $arregloColeccionDeJuegos
  */
-function ordenarColeccionDeJuegos($coleccionDeJuegos){
-
-  ksort($coleccionDeJuegos);
-  foreach ($coleccionDeJuegos as $indice => $elemento ){
-
-    echo $indice . " = " . $elemento ;
-  }
+    function ordenarColeccionDeJuegos($arregloColeccionDeJuegos)
+{
+  $n=count($arregloColeccionDeJuegos);
+  for ($i=0;$i<$n;$i++)
+    { 
+      sort($arregloColeccionDeJuegos);
+    print_r($arregloColeccionDeJuegos[$i]["jugadorCirculo"] ."\n" );
+   
+    }  
 }
 
 
@@ -370,7 +372,8 @@ do
     break ;
     
     case 6 ;
-    ordenarColeccionDeJuegos($arregloColeccionDeJuegos) ;        
+          ordenarColeccionDeJuegos($arregloColeccionDeJuegos);
+
     break ;
     }    
 } while ($opcionElegida != 7);
