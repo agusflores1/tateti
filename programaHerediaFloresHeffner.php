@@ -20,7 +20,7 @@
  * @param $numeroJuego1 int
  */
 function datoPartida($arreglo,$numeroJuego1){
-    if ($numeroJuego1>=1 && $numeroJuego1<count($arreglo))
+    if ($numeroJuego1>=1 && ($numeroJuego1<count($arreglo) +1))
     {  
       $numeroJuego1 = $numeroJuego1 - 1 ; // le resto 1 al numero ingreaso por el usuario porque el indice arranca en 0
       echo "***************************************\n";
@@ -140,8 +140,10 @@ function agregarJuego ($arregloColeccionJuegos , $nuevoJuego ){
   //Int $n
 
   $n = count ($arregloColeccionJuegos) ;
-  $coleccionJuegos [$n] = $nuevoJuego ;
-  return $coleccionJuegos ;
+  $arregloColeccionJuegos [$n] = $nuevoJuego ;
+  
+  print_r ($arregloColeccionJuegos) ;
+  return $arregloColeccionJuegos ;
   
 }
 /** Punto 6 (Emi):
@@ -290,7 +292,7 @@ function ordenarColeccionDeJuegos($arregloColeccionDeJuegos)
   print_r ($arregloColeccionDeJuegos) ;
 
 }
-
+// Funcion de comparacion para aplicar el orden al arreglo con la funcion predeterminada de PHP "uasort" del punto 11
 function cmp ($a , $b) {
 
   if ($a ["jugadorCirculo"] > $b ["jugadorCirculo"]) {
@@ -342,6 +344,7 @@ do
     $juego=jugar();
     imprimirResultado($juego);
     $arregloColeccionDeJuegos = agregarJuego ($arregloColeccionDeJuegos,$juego) ;
+    var_dump($arregloColeccionDeJuegos) ;
     break;
     case 2:
     echo "Ingrese un numero de partida: ";
@@ -363,7 +366,6 @@ do
       "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";} 
     break ;
-    
     case 4 :
     $simboloElegido = simboloValido() ;
     var_dump ($simboloElegido) ;
@@ -373,6 +375,7 @@ do
     var_dump ($ganadosElegido) . "\n";
     $porcentaje = ($ganadosElegido * $totalGanados) / 100 ;
     echo "El porcentaje de ganados de " . $simboloElegido . " es " . $porcentaje . " % \n" ;
+
     break ;
     case 5 :
     //Falta hacer que funcione bien
@@ -385,10 +388,11 @@ do
     echo "PERDIO: ". $primerGanador["juegosPerdidos"] ."\n" ;
     echo "EMPATO: " . $primerGanador["juegosEmpatados"] ."\n" ;
     echo "Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
+
     break ;
-    
     case 6 ;
-          ordenarColeccionDeJuegos($arregloColeccionDeJuegos);
+          
+    ordenarColeccionDeJuegos($arregloColeccionDeJuegos);
 
     break ;
     }    
