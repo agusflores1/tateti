@@ -197,8 +197,10 @@ function resumenJugador($arregloColeccionDeJuegos,$nombreJugador){
             $arregloResumenJugador["juegosPerdidos"]=$arregloResumenJugador["juegosPerdidos"]+1;
       //Si empato, agrega +1 en "juegosEmpatados"
         }else{
+          if ($arregloColeccionDeJuegos[$i]["puntosCirculo"]==$arregloColeccionDeJuegos[$i]["puntosCruz"])
+          {
           $arregloResumenJugador["juegosEmpatados"]=$arregloResumenJugador["juegosEmpatados"]+1;
-        }
+        }}
     //Si el jugador fue Circulo, almacena sus datos
       }else{
         $arregloResumenJugador["puntosAcumulados"]=$arregloResumenJugador["puntosAcumulados"]+$arregloColeccionDeJuegos[$i]["puntosCirculo"];
