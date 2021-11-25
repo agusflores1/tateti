@@ -160,6 +160,8 @@ function agregarJuego ($arreglo , $nuevoJuego ){
   $ganoJuego=-1;
   for ($i=0; $i<count($arregloColeccionDeJuegos) ; $i++) 
     { 
+    if( $arregloColeccionDeJuegos[$i]["puntosCruz"]<>$arregloColeccionDeJuegos[$i]["puntosCirculo"])
+    {
     if ($arregloColeccionDeJuegos[$i]["jugadorCruz"]==$nombreJugador && $arregloColeccionDeJuegos[$i]["puntosCruz"]>0) 
       {$ganoJuego=$i;
       $i=count($arregloColeccionDeJuegos)+1;
@@ -167,7 +169,9 @@ function agregarJuego ($arreglo , $nuevoJuego ){
        elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0)
       {$ganoJuego=$i;
         $i=count($arregloColeccionDeJuegos)+1;
+      }
       } 
+        
   } 
   return $ganoJuego;
 }
