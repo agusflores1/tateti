@@ -155,7 +155,10 @@ function cargarJuegos (){
  * @return array (arreglo modificado con el juego nuevo)
  */
 function agregarJuego ($arreglo , $nuevoJuego ){
+<<<<<<< HEAD
   //Int $n
+=======
+>>>>>>> b820abc755eca365dbc432b53b9732f270e697e5
 
   $n = count ($arreglo) ;
   $arreglo [$n] = $nuevoJuego ;
@@ -176,6 +179,8 @@ function agregarJuego ($arreglo , $nuevoJuego ){
   $ganoJuego=-1;
   for ($i=0; $i<count($arregloColeccionDeJuegos) ; $i++) 
     { 
+    if( $arregloColeccionDeJuegos[$i]["puntosCruz"]<>$arregloColeccionDeJuegos[$i]["puntosCirculo"])
+    {
     if ($arregloColeccionDeJuegos[$i]["jugadorCruz"]==$nombreJugador && $arregloColeccionDeJuegos[$i]["puntosCruz"]>0) 
       {$ganoJuego=$i;
       $i=count($arregloColeccionDeJuegos)+1;
@@ -183,7 +188,9 @@ function agregarJuego ($arreglo , $nuevoJuego ){
        elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0)
       {$ganoJuego=$i;
         $i=count($arregloColeccionDeJuegos)+1;
+      }
       } 
+        
   } 
   return $ganoJuego;
 
@@ -416,6 +423,7 @@ do{
     $nombreJugador= strtoupper (trim(fgets(STDIN))) ;
     $numeroPrimerPartida=primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador);
     if ($numeroPrimerPartida==-1){
+<<<<<<< HEAD
 
       echo "El jugador ".$nombreJugador." no gano ninguna partida \n"; 
 
@@ -444,6 +452,29 @@ do{
           "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
           echo "***************************************\n"; 
         } 
+=======
+      echo "El jugador ".$nombreJugador." no gano ninguna partida \n"; }
+    else{
+      if ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]>$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
+    {echo "***************************************\n";
+    echo "Juego TATETI: ".$numeroPrimerPartida+1 ." GANO X "; 
+    echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
+    "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
+      echo "***************************************\n";} 
+      elseif ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]<$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
+      {echo "***************************************\n";
+      echo "Juego TATETI: ".$numeroPrimerPartida+1 ." GANO O "; 
+      echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
+      "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
+        echo "***************************************\n";
+      }
+      else {
+        {echo "***************************************\n";
+        echo "Juego TATETI: ".$numeroPrimerPartida+1 ." EMPATE "; 
+        echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
+        "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
+          echo "***************************************\n";} } 
+>>>>>>> b820abc755eca365dbc432b53b9732f270e697e5
     }
     break;
     //Opción 4: Mostrar el porcentaje de juegos ganados
