@@ -355,7 +355,10 @@ function juegosGanadosSimbolo($arregloColeccionDeJuegos,$simbolo){
  */
 function ordenarColeccionDeJuegos($arregloColeccionDeJuegos){
   
+  //ordena el arreglo tomando como parametro una funcion de comparacion establecida por el programador 
+  //y mantiene la correlacion de los indices originales del arreglo   
   uasort ($arregloColeccionDeJuegos , "cmp" );
+  //muestra en pantalla el contenido de una variable de una forma legible para el usuario
   print_r ($arregloColeccionDeJuegos);
 
 }
@@ -398,6 +401,9 @@ $arregloColeccionDeJuegos = cargarJuegos();
  //Menú
 do{
   $opcionElegida=seleccionarOpcion();
+  /**la funcion "switch" es similar a una serie de sentencias "IF", funciona comparando una variable o condicion con distintos
+   * valores dentro de la sentencia y ejecuta solo la parte del codigo que coincide con el valor comparado
+   */  
   switch($opcionElegida){
     //Opción 1: Jugar TaTeTi
     case 1:
