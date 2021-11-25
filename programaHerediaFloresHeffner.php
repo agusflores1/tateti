@@ -166,8 +166,8 @@ function agregarJuego ($arreglo , $nuevoJuego ){
       {$ganoJuego=$i;
       $i=count($arregloColeccionDeJuegos)+1;
       }
-       elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0)
-      {$ganoJuego=$i;
+       elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0){
+         $ganoJuego=$i;
         $i=count($arregloColeccionDeJuegos)+1;
       }
       } 
