@@ -37,7 +37,7 @@ function datoPartida($arreglo,$numeroJuego1){
  * @var int $numero
  * @return int
  */
-function solicitarNumeroEntre($min, $max){
+function numeroEntre($min, $max){
   echo "Seleccione una opción del menú: "; 
   $numero = trim(fgets(STDIN));
   while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
@@ -60,9 +60,9 @@ function seleccionarOpcion (){
     5) Mostrar resumen del jugador
     6) Mostrar listado de juegos ordenados por jugador O
     7) Salir \n";
-    $min=1;
-    $max=7;
-    $opcion=solicitarNumeroEntre($min,$max);
+    $min = 1 ;
+    $max = 7 ;
+    $opcion = numeroEntre($min,$max);
   return $opcion;
   }
 /** Punto 1:
@@ -338,12 +338,14 @@ do{
     case 5 :
     echo "Ingrese el nombre de un jugador: " ;
     $nomJugador = strtoupper (trim(fgets(STDIN)));
-    $primerGanador = resumenJugador ($arregloColeccionDeJuegos,$nomJugador);
+    $primerGanador = resumenJugador ($arregloColeccionDeJuegos,$nomJugador) ;
+    echo "*********************************************\n";
     echo "Jugador:" . $primerGanador["nombre"] ."\n" ;
     echo "GANO: ". $primerGanador["juegosGanados"] ."\n";
     echo "PERDIO: ". $primerGanador["juegosPerdidos"] ."\n" ;
     echo "EMPATO: " . $primerGanador["juegosEmpatados"] ."\n" ;
-    echo "Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
+    echo "Total de Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
+    echo "*********************************************\n";
     break ;
     //Opción 6: Mostrar listado de juegos ordenado por O
     case 6;
