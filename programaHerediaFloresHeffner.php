@@ -139,8 +139,6 @@ function cargarJuegos (){
  * @return array arreglo modificado con el juego nuevo
  */
 function agregarJuego ($arreglo , $nuevoJuego ){
-  //Queda completar con el código hecho por Emanuel
-  //Int $n
 
   $n = count ($arreglo) ;
   $arreglo [$n] = $nuevoJuego ;
