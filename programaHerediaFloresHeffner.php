@@ -54,7 +54,7 @@ function datoPartida($arreglo,$numeroJuego1){
  * @return int
  */
 function numeroEntre($min, $max){
-  echo "Seleccione una opción del menú: "; 
+  echo "Seleccione una opcion del menu: "; 
   $numero = trim(fgets(STDIN));
   while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
     echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
@@ -348,20 +348,20 @@ do{
     else{
       if ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]>$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
     {echo "***************************************\n";
-    echo "Juego TATETI: ".$numeroPrimerPartida+1 ." GANO X "; 
+    echo "Juego TATETI: ".($numeroPrimerPartida+1) ." GANO X "; 
     echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
     "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";} 
       elseif ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]<$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
       {echo "***************************************\n";
-      echo "Juego TATETI: ".$numeroPrimerPartida+1 ." GANO O "; 
+      echo "Juego TATETI: ".($numeroPrimerPartida+1) ." GANO O "; 
       echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
       "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
         echo "***************************************\n";
       }
       else {
         {echo "***************************************\n";
-        echo "Juego TATETI: ".$numeroPrimerPartida+1 ." EMPATE "; 
+        echo "Juego TATETI: ".($numeroPrimerPartida+1) ." EMPATE "; 
         echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
         "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
           echo "***************************************\n";} } 
