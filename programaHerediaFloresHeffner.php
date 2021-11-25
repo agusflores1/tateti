@@ -166,8 +166,8 @@ function agregarJuego ($arreglo , $nuevoJuego ){
       {$ganoJuego=$i;
       $i=count($arregloColeccionDeJuegos)+1;
       }
-       elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0){
-         $ganoJuego=$i;
+       elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0)
+      {$ganoJuego=$i;
         $i=count($arregloColeccionDeJuegos)+1;
       }
       } 
@@ -350,20 +350,20 @@ do{
     else{
       if ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]>$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
     {echo "***************************************\n";
-    echo "Juego TATETI: ".$numeroPrimerPartida ." GANO X "; 
+    echo "Juego TATETI: ".$numeroPrimerPartida+1 ." GANO X "; 
     echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
     "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";} 
       elseif ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]<$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
       {echo "***************************************\n";
-      echo "Juego TATETI: ".$numeroPrimerPartida ." GANO O "; 
+      echo "Juego TATETI: ".$numeroPrimerPartida+1 ." GANO O "; 
       echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
       "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
         echo "***************************************\n";
       }
       else {
         {echo "***************************************\n";
-        echo "Juego TATETI: ".$numeroPrimerPartida ." EMPATE "; 
+        echo "Juego TATETI: ".$numeroPrimerPartida+1 ." EMPATE "; 
         echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
         "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
           echo "***************************************\n";} } 
