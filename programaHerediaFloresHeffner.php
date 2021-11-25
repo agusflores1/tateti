@@ -21,9 +21,25 @@
 function datoPartida($arreglo,$numeroJuego1){
     if ($numeroJuego1>=1 && ($numeroJuego1<count($arreglo) +1)){  
       $numeroJuego1 = $numeroJuego1 - 1 ; // le resto 1 al numero ingreaso por el usuario porque el indice arranca en 0
+      
+      if ($arreglo[$numeroJuego1]["puntosCruz"]<$arreglo[$numeroJuego1]["puntosCirculo"])
+      {echo "***************************************\n";
+      echo "Juego TATETI: ".($numeroJuego1 + 1 ) ." GANO O ".
+       "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";
-      echo "Juego TATETI: ".($numeroJuego1 + 1 ) . "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
+      }
+      elseif($arreglo[$numeroJuego1]["puntosCruz"]>$arreglo[$numeroJuego1]["puntosCirculo"])
+      {echo "***************************************\n";
+      echo "Juego TATETI: ".($numeroJuego1 + 1 ) ." GANO X ".
+       "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";
+      }
+      else 
+      {echo "***************************************\n";
+      echo "Juego TATETI: ".($numeroJuego1 + 1 ) ." EMPATE ".
+       "\nJugador X: ".$arreglo[$numeroJuego1]["jugadorCruz"]. " Obtuvo ".$arreglo[$numeroJuego1]["puntosCruz"]." Puntos "."\nJugador O: ".$arreglo[$numeroJuego1]["jugadorCirculo"]." Obtuvo ".$arreglo[$numeroJuego1]["puntosCirculo"]." Puntos \n";
+      echo "***************************************\n";
+      }
     }
     else 
     {
