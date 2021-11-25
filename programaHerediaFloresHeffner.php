@@ -336,12 +336,27 @@ do{
     if ($numeroPrimerPartida==-1){
       echo "El jugador ".$nombreJugador." no gano ninguna partida \n"; }
     else{
-    echo "***************************************\n";
-    echo "Juego TATETI: ".$numeroPrimerPartida ; 
+      if ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]>$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
+    {echo "***************************************\n";
+    echo "Juego TATETI: ".$numeroPrimerPartida ." GANO X "; 
     echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
     "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
       echo "***************************************\n";} 
-    break;
+      elseif ($arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]<$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"])
+      {echo "***************************************\n";
+      echo "Juego TATETI: ".$numeroPrimerPartida ." GANO O "; 
+      echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
+      "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
+        echo "***************************************\n";
+      }
+      else {
+        {echo "***************************************\n";
+        echo "Juego TATETI: ".$numeroPrimerPartida ." EMPATE "; 
+        echo "\nJugador X: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCruz"]. " Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCruz"]." Puntos ".
+        "\nJugador O: ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["jugadorCirculo"]." Obtuvo ".$arregloColeccionDeJuegos[$numeroPrimerPartida]["puntosCirculo"]." Puntos \n";
+          echo "***************************************\n";} } 
+    }
+      break;
     //Opción 4: Mostrar el porcentaje de juegos ganados
     case 4 :
     $simboloElegido = simboloValido();
