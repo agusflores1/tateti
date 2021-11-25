@@ -102,49 +102,24 @@ function seleccionarOpcion (){
  * @return array $arregloColeccionDeJuegos
  */
 function cargarJuegos (){
-  $arregloColeccionDeJuegos = [];
-  $arregloColeccionDeJuegos [0] = [ "jugadorCruz" => "EMA",
-                                    "jugadorCirculo" => "BAUTY",
-                                    "puntosCruz" => 0 ,
-                                    "puntosCirculo" => 6 ];  
-  $arregloColeccionDeJuegos [1] = [ "jugadorCruz" => "JULY",
-                                    "jugadorCirculo" => "AGUS",
-                                    "puntosCruz" => 1 ,
-                                    "puntosCirculo" => 1 ];
-  $arregloColeccionDeJuegos [2] = [ "jugadorCruz" => "DANI",
-                                    "jugadorCirculo" => "CECI",
-                                    "puntosCruz" => 3 ,
-                                    "puntosCirculo" => 0 ];  
-  $arregloColeccionDeJuegos [3] = [ "jugadorCruz" => "GABY",
-                                    "jugadorCirculo" => "EMA",
-                                    "puntosCruz" => 4,
-                                    "puntosCirculo" => 0 ]; 
-  $arregloColeccionDeJuegos [4] = [ "jugadorCruz" => "JULY",
-                                    "jugadorCirculo" => "DANI",
-                                    "puntosCruz" => 1 ,
-                                    "puntosCirculo" => 1 ]; 
-  $arregloColeccionDeJuegos [5] = [ "jugadorCruz" => "DANI",
-                                    "jugadorCirculo" => "JULY",
-                                    "puntosCruz" => 4 ,
-                                    "puntosCirculo" => 0 ]; 
-  $arregloColeccionDeJuegos [6] = [ "jugadorCruz" => "LUCE",
-                                    "jugadorCirculo" => "GABY",
-                                    "puntosCruz" => 3 ,
-                                    "puntosCirculo" => 0 ]; 
-  $arregloColeccionDeJuegos [7] = [ "jugadorCruz" => "BAUTY",
-                                    "jugadorCirculo" => "AGUS",
-                                    "puntosCruz" => 0 ,
-                                    "puntosCirculo" => 2 ]; 
-  $arregloColeccionDeJuegos [8] = [ "jugadorCruz" => "CECI",
-                                    "jugadorCirculo" => "SUSANA",
-                                    "puntosCruz" => 1,
-                                    "puntosCirculo" => 1 ]; 
-  $arregloColeccionDeJuegos [9] = [ "jugadorCruz" => "GERMAN",
-                                    "jugadorCirculo" => "MIGUEL",
-                                    "puntosCruz" => 0 ,
-                                    "puntosCirculo" => 4 ];                                 
+$arregloColeccionDeJuegos = [];
+  //$CAMBIAR_POR_NOMBRE_COLECCION = [];
 
-  return $arregloColeccionDeJuegos;
+$jg1 = ["jugadorCruz" => "AMARILIS", "jugadorCirculo" => "MILOS",    "puntosCruz" => 1, "puntosCirculo" => 1];
+$jg2 = ["jugadorCruz" => "ZENDA",    "jugadorCirculo" => "AMARILIS", "puntosCruz" => 3, "puntosCirculo" => 0];
+$jg3 = ["jugadorCruz" => "ZENDA",    "jugadorCirculo" => "MILOS",    "puntosCruz" => 0, "puntosCirculo" => 4];
+$jg4 = ["jugadorCruz" => "CALIXTO",  "jugadorCirculo" => "TRUMAN",   "puntosCruz" => 1, "puntosCirculo" => 1];
+$jg5 = ["jugadorCruz" => "AMARILIS", "jugadorCirculo" => "MILOS",    "puntosCruz" => 5, "puntosCirculo" => 0];
+$jg6 = ["jugadorCruz" => "FEDORA",   "jugadorCirculo" => "CALIXTO",  "puntosCruz" => 0, "puntosCirculo" => 3];
+$jg7 = ["jugadorCruz" => "TRUMAN",   "jugadorCirculo" => "AMARILIS", "puntosCruz" => 4, "puntosCirculo" => 0];
+$jg8 = ["jugadorCruz" => "CALIXTO",  "jugadorCirculo" => "TRUMAN",   "puntosCruz" => 1, "puntosCirculo" => 1];
+$jg9 = ["jugadorCruz" => "TRUMAN",   "jugadorCirculo" => "FEDORA",   "puntosCruz" => 2, "puntosCirculo" => 0];
+$jg10= ["jugadorCruz" => "MILOS",    "jugadorCirculo" => "ZENDA",   "puntosCruz" => 1, "puntosCirculo" => 1];
+
+//array_push($CAMBIAR_POR_NOMBRE_COLECCION, $jg1, $jg2, $jg3, $jg4, $jg5, $jg6, $jg7, $jg8, $jg9, $jg10);
+                                 
+
+return $arregloColeccionDeJuegos;
 }
 
 /** Punto 5:
