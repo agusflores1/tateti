@@ -169,7 +169,7 @@ function agregarJuego ($arreglo , $nuevoJuego ){
  * ganado por dicho jugador. Si el jugador no ganó ningún juego, la función debe retornar -1
  * @param array $arregloColeccionDeJuegos
  * @param string $nombreJugador
- * @return int retorna indice para ubicar el primer juego ganado por el jugador, si nunca gano, retorna -1
+ * @return int (retorna indice para ubicar el primer juego ganado por el jugador, si nunca gano, retorna -1)
  */
 function primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador){
   // int $i
