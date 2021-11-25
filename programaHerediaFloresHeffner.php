@@ -155,18 +155,23 @@ function agregarJuego ($arreglo , $nuevoJuego ){
  * @param string $nombreJugador
  * @return int retorna indice para ubicar el primer juego ganado por el jugador, si nunca gano, retorna -1
  */
-function primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador){
+ function primerJuegoGanado($arregloColeccionDeJuegos,$nombreJugador)
+{
   $ganoJuego=-1;
   for ($i=0; $i<count($arregloColeccionDeJuegos) ; $i++) 
     { 
-    if ($arregloColeccionDeJuegos[$i]["jugadorCruz"]==$nombreJugador || $arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador)
-    {
-      $ganoJuego=$i;
+    if ($arregloColeccionDeJuegos[$i]["jugadorCruz"]==$nombreJugador && $arregloColeccionDeJuegos[$i]["puntosCruz"]>0) 
+      {$ganoJuego=$i;
       $i=count($arregloColeccionDeJuegos)+1;
-    }
-    }
+      }
+       elseif($arregloColeccionDeJuegos[$i]["jugadorCirculo"]==$nombreJugador&& $arregloColeccionDeJuegos[$i]["puntosCirculo"]>0)
+      {$ganoJuego=$i;
+        $i=count($arregloColeccionDeJuegos)+1;
+      } 
+  } 
   return $ganoJuego;
 }
+
 /** Punto 7:
  * Función que dada la colección de juegos y el nombre de un jugador, 
  * retorne el resumen del jugador
