@@ -58,7 +58,7 @@ function datoPartida($arreglo,$numeroJuego1){
  * @param int $max
  * @return int
  */
-function numeroEntre($min, $max){
+/**function numeroEntre($min, $max){
   // int $numero
     
   echo "Seleccione una opción del menú: "; 
@@ -71,7 +71,7 @@ function numeroEntre($min, $max){
   }
 
   return $numero;
-}
+}*/
 
 /** Punto 2:
  * Funcion que muestra en pantalla el menu de opciones y retorna una opcion valida
@@ -90,7 +90,8 @@ function seleccionarOpcion (){
     7) Salir \n";
   $min = 1 ;
   $max = 7 ;
-  $opcion = numeroEntre($min,$max);
+  echo "Seleccione una opción del menú: "; 
+  $opcion = solicitarNumeroEntre ($min,$max);
   
   return $opcion;
 
@@ -341,21 +342,50 @@ function ordenarColeccionDeJuegos($arregloColeccionDeJuegos){
 // Funcion de comparacion para aplicar el orden al arreglo con la funcion predeterminada de PHP "uasort" del punto 11
 
 function cmp ($a , $b){
+  //int $valor
+
 
   if ($a ["jugadorCirculo"] > $b ["jugadorCirculo"]) {
 
-    return 1 ;
+    $valor = 1 ;
 
   } elseif ($a ["jugadorCirculo"] < $b ["jugadorCirculo"]){
 
-    return -1 ;
+    $valor = -1 ;
 
   } else {
 
-    return 0 ;
+    $valor = 0 ;
     
   }
+
+  return $valor ;
+
 }
+
+/**
+ * Solicita al usuario un número en el rango [$min,$max]
+ * @param int $min
+ * @param int $max
+ * @return int 
+ */
+function solicitarNumeroEntre($min, $max)
+{
+    //int $numero
+    $numero = trim(fgets(STDIN));
+    while (!is_int($numero) && !($numero >= $min && $numero <= $max)) {
+        echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
+        $numero = trim(fgets(STDIN));
+    }
+    return $numero;
+}
+
+
+
+
+
+
+
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
