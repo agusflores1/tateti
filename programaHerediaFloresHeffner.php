@@ -362,6 +362,31 @@ function cmp ($a , $b){
 
 }
 
+/*Funcion que verifica si existe un jugador en el arreglo
+*@param array $arreglo
+*@param array $jugador 
+*@return boolean
+*/
+function existeJugador($arreglo , $jugador){
+  //int $i , $n boolean $existe 
+  $i = 0 ;
+  $n = count ($arreglo) ;
+  $existe = false ;
+
+  while ($i < $n && $existe == false ) {
+
+    if ($arreglo[$i]["jugadorCruz"]==$jugador || $arreglo[$i]["jugadorCirculo"]==$jugador){
+
+      $existe = true ;
+
+    }    
+    
+    $i = $i +1 ;
+  }
+  return $existe ;
+
+}
+
 
 /**************************************/
 /*********** PROGRAMA PRINCIPAL *******/
@@ -372,6 +397,7 @@ function cmp ($a , $b){
 *   int $opcionElegida , $numeroPartida , $numeroPrimerPartida , $totalGanados , $ganadosElegido
 *   string $nombreJugador , $simboloElegido , $nomJugador
 *   float $porcentaje
+*   boolean $verificar
 */
 
 //Inicialización de variables:
@@ -430,6 +456,12 @@ do{
     case 5 :
     echo "Ingrese el nombre de un jugador: " ;
     $nomJugador = strtoupper (trim(fgets(STDIN)));
+    $verificar = existeJugador($arregloColeccionDeJuegos , $nomJugador) ;
+    if ($verificar == false){
+
+      echo "El jugador " . $nomJugador . " no jugo ninguna partida \n" ;
+
+    } else {  
     $primerGanador = resumenJugador ($arregloColeccionDeJuegos,$nomJugador) ;
     echo "*********************************************\n";
     echo "Jugador:" . $primerGanador["nombre"] ."\n" ;
@@ -438,6 +470,7 @@ do{
     echo "EMPATO: " . $primerGanador["juegosEmpatados"] ."\n" ;
     echo "Total de Puntos acumulados: " . $primerGanador["puntosAcumulados"] ."\n" ; 
     echo "*********************************************\n";
+    }
     break ;
     //Opción 6: Mostrar listado de juegos ordenado por O
     case 6;
